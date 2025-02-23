@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "linked_list",
+  "name": "random",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

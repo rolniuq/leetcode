@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2024",
+    "target": "ESNext",
     "module": "system",
     "noImplicitAny": true,
     "removeComments": true,
@@ -8,5 +8,6 @@
     "outFile": "../../built/local/tsc.js",
     "sourceMap": true
   },
-  "include": ["*.ts"],
+
+  "include": ["./**/*.ts"],
 }

@@ -1,7 +1,7 @@
-import { CreateLinkedList, PrintLinkedList } from './helper';
-import { node } from './merge_2_list';
+import { CreateLinkedList, PrintLinkedList } from '../helper/helper';
+import { TreeNode } from '../helper/helper';
 
-function getNodeString(l: node | null): string {
+function getNodeString(l: TreeNode | null): string {
   if (l === null) {
     return '';
   }
@@ -15,7 +15,7 @@ function getNodeString(l: node | null): string {
   return str;
 }
 
-function addTwoNumbers(l1 : node | null, l2 : node | null): node | null {
+function addTwoNumbers(l1 : TreeNode | null, l2 : TreeNode | null): TreeNode | null {
   const str1 = getNodeString(l1);
   const str2 = getNodeString(l2);
 
@@ -25,8 +25,8 @@ function addTwoNumbers(l1 : node | null, l2 : node | null): node | null {
   const sum = num1 + num2;
   let sumStr = sum.toString().split('').reverse().join('');
 
-  const head: node = { val: parseInt(sumStr[0]), next: null };
-  let current: node = head;
+  const head: TreeNode = { val: parseInt(sumStr[0]), next: null };
+  let current: TreeNode = head;
 
   sumStr = sumStr.slice(1);
 
