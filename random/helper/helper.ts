@@ -1,11 +1,17 @@
-export type TreeNode = {
+export type LinkedNode = {
   val: number;
-  next: TreeNode | null;
+  next: LinkedNode | null;
 };
 
-export function CreateLinkedList(arr: number[]): TreeNode | null {
-  let head: TreeNode = { val: arr[0], next: null };
-  let current: TreeNode = head;
+export type TreeNode = {
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;
+}
+
+export function CreateLinkedList(arr: number[]): LinkedNode | null {
+  let head: LinkedNode = { val: arr[0], next: null };
+  let current: LinkedNode = head;
 
   for (let i = 1; i < arr.length; i++) {
     current.next = { val: arr[i], next: null };
@@ -15,8 +21,8 @@ export function CreateLinkedList(arr: number[]): TreeNode | null {
   return head;
 }
 
-export function PrintLinkedList(head: TreeNode | null): void {
-  let current: TreeNode | null = head;
+export function PrintLinkedList(head: LinkedNode | null): void {
+  let current: LinkedNode | null = head;
 
   while (current !== null) {
     console.log(current.val);

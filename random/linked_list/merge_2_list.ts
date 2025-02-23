@@ -1,11 +1,11 @@
-import { TreeNode } from "../helper/helper";
+import { LinkedNode } from "../helper/helper";
 
-function mergeTwoLists(l1: TreeNode | null, l2: TreeNode | null): TreeNode | null {
+function mergeTwoLists(l1: LinkedNode | null, l2: LinkedNode | null): LinkedNode | null {
   if (!l1) return l2;
   if (!l2) return l1;
 
-  let head: TreeNode = { val: 0, next: null };
-  let current: TreeNode = head;
+  let head: LinkedNode = { val: 0, next: null };
+  let current: LinkedNode = head;
 
   while (l1 && l2) {
     if (l1.val < l2.val) {
