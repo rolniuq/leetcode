@@ -1,6 +1,6 @@
 import { LinkedNode } from "../helper/helper";
 
-function middleOfNode(head: LinkedNode | null): ListNode | null {
+function middleOfNode(head: LinkedNode | null): LinkedNode | null {
   let fast = head;
   let slow = head;
 
