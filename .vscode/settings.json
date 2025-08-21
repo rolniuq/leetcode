@@ -1,3 +1,5 @@
 {
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "rust-analyzer.rustfmt.extraArgs": [],
+  "rust-analyzer.rustfmt.overrideCommand": null
 }
