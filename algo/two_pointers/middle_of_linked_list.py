@@ -12,4 +12,9 @@ class LinkedList:
         self.head = v
 
     def middle_of_linked_list(self) -> int:
-        return 0
+        slow = self.head
+        fast = self.head
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow.data
