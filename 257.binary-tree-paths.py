@@ -20,17 +20,20 @@ class Solution:
         if not root:
             return []
 
-        res = []
         if not root.left and not root.right:
-            return res
-        elif not root.left:
-            return self.binaryTreePaths(root.right)
-        elif not root.right:
-            return self.binaryTreePaths(root.left)
+            return [str(root.val)]
 
-        res.append(root.val)
+        res = []
 
-        return [self.binaryTreePaths(root.left), self.binaryTreePaths(root.right)]
+        if root.left:
+            paths = self.binaryTreePaths(root.left)
+            res += [str(root.val) + "->" + path for path in paths]
+
+        if root.right:
+            paths = self.binaryTreePaths(root.right)
+            res += [str(root.val) + "->" + path for path in paths]
+
+        return res
 
 
 # @lc code=end
