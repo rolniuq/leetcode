@@ -12,33 +12,19 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+import math
 from typing import Optional
 
 
 class Solution:
-    def validateLeft(
-        self, root: Optional[TreeNode], lower: float, upper: float
-    ) -> bool:
+    def validate(self, root: Optional[TreeNode], lower: float, upper: float) -> bool:
         if not root:
             return True
 
         if not (lower < root.val < upper):
             return False
 
-        return self.validateLeft(root.left, lower, root.val) and self.validateLeft(
-            root.right, root.val, upper
-        )
-
-    def validateRight(
-        self, root: Optional[TreeNode], lower: float, upper: float
-    ) -> bool:
-        if not root:
-            return True
-
-        if not (lower < root.val < upper):
-            return False
-
-        return self.validateRight(root.left, lower, root.val) and self.validateRight(
+        return self.validate(root.left, lower, root.val) and self.validate(
             root.right, root.val, upper
         )
 
@@ -46,9 +32,9 @@ class Solution:
         if not root:
             return True
 
-        return self.validateLeft(
-            root.left, float("-inf"), root.val
-        ) and self.validateRight(root.right, root.val, float("inf"))
+        return self.validate(root.left, -math.inf, root.val) and self.validate(
+            root.right, root.val, math.inf
+        )
 
 
 # @lc code=end
