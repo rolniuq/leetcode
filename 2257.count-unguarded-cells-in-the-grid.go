@@ -68,46 +68,44 @@ package leetcode
 
 func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 	grid := make([][]int, 0)
-	for i := range m {
-		for j := range n {
-			grid[i][j] = 0
-		}
+	for range m {
+		row := make([]int, n)
+		grid = append(grid, row)
 	}
 
-	for g_row := range guards {
-		for g_col := range g_row {
-			grid[g_row][g_col] = 2
-		}
+	for _, pos := range guards {
+		grid[pos[0]][pos[1]] = 2
 	}
 
-	for w_row := range walls {
-		for w_col := range w_row {
-			grid[w_row][w_col] = 2
-		}
+	for _, pos := range walls {
+		grid[pos[0]][pos[1]] = 2
 	}
 
 	directors := [][]int{{-1, 0}, {0, -1}, {1, 0}, {0, 1}}
-	for g_row := range guards {
-		for g_col := range g_row {
-			for d_row := range directors {
-				for d_col := range d_row {
-					cur_row := g_row
-					cur_col := g_col
-					for 0 <= d_row+cur_row && d_row+cur_row < m && 0 <= d_col+cur_col && d_col+cur_col < n && grid[d_row+cur_row][d_col+cur_col] != 2 {
-						cur_row += d_row
-						cur_col += d_col
-						grid[cur_row][cur_col] = 1
-					}
-				}
+	for _, g_pos := range guards {
+		g_row, g_col := g_pos[0], g_pos[1]
+
+		for _, d_pos := range directors {
+			d_row, d_col := d_pos[0], d_pos[1]
+
+			cur_row := g_row
+			cur_col := g_col
+
+			for 0 <= d_row+cur_row && d_row+cur_row < m &&
+				0 <= d_col+cur_col && d_col+cur_col < n &&
+				grid[d_row+cur_row][d_col+cur_col] != 2 {
+				cur_row += d_row
+				cur_col += d_col
+				grid[cur_row][cur_col] = 1
 			}
 		}
 	}
 
 	res := 0
 
-	for row := range grid {
-		for col := range row {
-			if grid[row][col] == 0 {
+	for i := range grid {
+		for j := range grid[i] {
+			if grid[i][j] == 0 {
 				res += 1
 			}
 		}
